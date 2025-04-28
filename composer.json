@@ -1,0 +1,19 @@
+{
+    "name": "bczopp/mvc",
+    "description": "Minimal MVC-Framework in pure PHP 8.4",
+    "type": "project",
+    "require": {
+      "php": "^8.3",
+      "ext-pdo": "*"
+    },
+    "autoload": {
+      "psr-4": {
+        "Tornado\\": "src/",
+        "Tornado\\Tests\\": "tests/"
+      }
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^12.1",
+      "ext-curl": "*"
+    }
+}
