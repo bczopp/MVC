@@ -4,7 +4,6 @@ namespace Tornado\Service;
 class Container
 {
     private array $definitions = [];
-    private array $instances   = [];
 
     public function __construct(array $serviceRegistration)
     {
@@ -30,12 +29,10 @@ class Container
      */
     public function get(string $id): object
     {
-        if (!isset($this->instances[$id])) {
-            if (!isset($this->definitions[$id])) {
-                throw new \Exception("Service $id not defined");
-            }
-            $this->instances[$id] = ($this->definitions[$id])($this);
+        //UPDATE: to not work with sigletons by design of this conteainer, instances are just created on the fly.
+        if (!isset($this->definitions[$id])) {
+            throw new \Exception("Service $id not defined");
         }
-        return $this->instances[$id];
+        return ($this->definitions[$id])($this);
     }
 }
